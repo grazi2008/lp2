@@ -1,0 +1,256 @@
+ Exemplo de Classe Carro
+
+javascript
+class Carro {
+    constructor(marca, modelo, ano) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+    }
+
+    info() {
+        console.log(`Carro: ${this.marca} ${this.modelo}, Ano: ${this.ano}`);
+    }
+
+    ligar() {
+        console.log(`${this.modelo} está ligado.`);
+    }
+
+    desligar() {
+        console.log(`${this.modelo} está desligado.`);
+    }
+}
+
+// Criando uma instância da classe Carro
+const meuCarro = new Carro('Toyota', 'Corolla', 2020);
+
+// Usando os métodos da classe
+meuCarro.info();   // Saída: Carro: Toyota Corolla, Ano: 2020
+meuCarro.ligar();  // Saída: Corolla está ligado.
+meuCarro.desligar(); // Saída: Corolla está desligado.
+
+
+### Explicação do exemplo
+
+1. *Classe Carro*:
+   - Tem um construtor que recebe marca, modelo e ano como parâmetros.
+   - Define três métodos:
+     - info(): Exibe as informações do carro.
+     - ligar(): Simula o ato de ligar o carro.
+     - desligar(): Simula o ato de desligar o carro.
+
+2. *Instância*:
+   - Criamos um objeto chamado meuCarro a partir da classe Carro, passando os parâmetros necessários.
+   - Chamamos os métodos info(), ligar() e desligar() para ver os resultados.
+
+
+
+
+
+
+ Exemplo de Objeto 
+
+javascript
+const livro = {
+    titulo: 'O Senhor dos Anéis',
+    autor: 'J.R.R. Tolkien',
+    anoPublicacao: 1954,
+    genero: 'Fantasia',
+    
+    // Método para exibir informações do livro
+    detalhes: function() {
+        console.log(`${this.titulo} é um livro de ${this.genero} escrito por ${this.autor} e publicado em ${this.anoPublicacao}.`);
+    }
+};
+
+// Acessando propriedades
+console.log(livro.titulo); // Saída: O Senhor dos Anéis
+console.log(livro.autor);  // Saída: J.R.R. Tolkien
+
+// Chamando o método
+livro.detalhes(); // Saída: O Senhor dos Anéis é um livro de Fantasia escrito por J.R.R. Tolkien e publicado em 1954.
+
+
+### Explicação do Exemplo
+
+1. *Definição do Objeto*:
+   - O objeto livro possui quatro propriedades: titulo, autor, anoPublicacao e genero.
+   - Inclui também um método chamado detalhes, que exibe informações sobre o livro.
+
+2. *Acesso às Propriedades*:
+   - As propriedades são acessadas diretamente usando a notação de ponto.
+
+3. *Método*:
+   - O método detalhes usa this para acessar as propriedades do objeto e exibir uma mensagem formatada no console.
+
+
+
+
+
+1. *Atributos de Objetos*:
+   javascript
+   const carro = {
+       marca: 'Toyota',
+       modelo: 'Corolla',
+       ano: 2020
+   };
+
+   console.log(carro.marca); // Acessa o atributo 'marca'
+   carro.ano = 2021; // Modifica o atributo 'ano'
+   
+
+2. *Atributos em Elementos HTML*:
+   Quando você está manipulando o DOM (Document Object Model), atributos também se referem às propriedades dos elementos HTML. Por exemplo, você pode acessar ou modificar atributos como id, class, src, etc.
+   javascript
+   const imagem = document.querySelector('img');
+   console.log(imagem.src); // Acessa o atributo 'src'
+   imagem.alt = 'Uma imagem'; // Modifica o atributo 'alt'
+   
+
+3. *Atributos de Funções*:
+   Funções em JavaScript também podem ter atributos. Por exemplo, você pode adicionar propriedades a uma função.
+   javascript
+   function saudacao() {
+       console.log('Olá!');
+   }
+
+   saudacao.linguagem = 'Português'; // Adiciona um atributo à função
+   console.log(saudacao.linguagem); // Acessa o atributo
+
+
+
+1. Prototipagem*:
+   JavaScript utiliza um sistema de protótipos para implementar herança. Cada objeto tem uma referência interna a outro objeto chamado de "prototipo". Quando você tenta acessar uma propriedade ou método que não existe no objeto, o JavaScript procura essa propriedade no protótipo do objeto.
+
+   javascript
+   const animal = {
+       som: 'som genérico',
+       fazerSom: function() {
+           console.log(this.som);
+       }
+   };
+
+   const cachorro = Object.create(animal);
+   cachorro.som = 'au au';
+   cachorro.fazerSom(); // 'au au'
+   
+
+2. *Classes e Herança*:
+   Com a introdução da sintaxe de classes no ES6, a herança se tornou mais intuitiva. Você pode usar a palavra-chave extends para criar uma classe que herda de outra.
+
+   javascript
+   class Animal {
+       constructor(nome) {
+           this.nome = nome;
+       }
+
+       fazerSom() {
+           console.log(`${this.nome} faz um som.`);
+       }
+   }
+
+   class Cachorro extends Animal {
+       fazerSom() {
+           console.log(`${this.nome} diz: au au!`);
+       }
+   }
+
+   const meuCachorro = new Cachorro('Rex');
+   meuCachorro.fazerSom(); // 'Rex diz: au au!'
+   
+
+3. *Métodos do Super*:
+   Dentro de uma classe filha, você pode usar a palavra-chave super para chamar métodos da classe pai.
+
+   javascript
+   class Gato extends Animal {
+       fazerSom() {
+           super.fazerSom(); // Chama o método da classe pai
+           console.log(`${this.nome} diz: miau!`);
+       }
+   }
+
+   const meuGato = new Gato('Mimi');
+   meuGato.fazerSom();
+   // Saída:
+   // Mimi faz um som.
+   // Mimi diz: miau!
+   
+
+4. *Encadeamento de Prototipos*:
+   Você também pode encadear protótipos, permitindo que um objeto herde de outros objetos.
+
+Herança é uma maneira poderosa de organizar e estruturar seu código, permitindo que você crie sistemas complexos de forma mais simples e eficiente.
+
+
+
+
+
+Polimorfismo é um conceito fundamental em programação orientada a objetos que permite que diferentes classes implementem métodos com o mesmo nome, mas com comportamentos diferentes. Em JavaScript, isso é alcançado principalmente através da herança e da sobreposição de métodos.
+
+### Tipos de Polimorfismo
+
+Existem dois tipos principais de polimorfismo:
+
+1. *Polimorfismo em tempo de compilação* (ou sobrecarga de métodos): Não é suportado diretamente em JavaScript como em outras linguagens, pois JS não tem uma maneira de definir múltiplas funções com o mesmo nome e diferentes assinaturas.
+
+2. *Polimorfismo em tempo de execução*: Esse é o tipo mais comum em JavaScript, onde você pode ter métodos com o mesmo nome em diferentes objetos ou classes e o comportamento varia dependendo do objeto que está chamando o método.
+
+### Exemplo de Polimorfismo em JavaScript
+
+Vamos criar um exemplo simples usando herança:
+
+javascript
+class Animal {
+    falar() {
+        console.log("O animal faz um som.");
+    }
+}
+
+class Cachorro extends Animal {
+    falar() {
+        console.log("O cachorro late.");
+    }
+}
+
+class Gato extends Animal {
+    falar() {
+        console.log("O gato mia.");
+    }
+}
+
+// Função que recebe um objeto do tipo Animal
+function comunicar(animal) {
+    animal.falar();
+}
+
+const meuCachorro = new Cachorro();
+const meuGato = new Gato();
+
+comunicar(meuCachorro); // Saída: O cachorro late.
+comunicar(meuGato);     // Saída: O gato mia.
+
+
+### Explicação do Exemplo
+
+1. *Classe Base*:
+   A classe Animal tem um método falar que gera uma mensagem genérica.
+
+2. *Classes Derivadas*:
+   As classes Cachorro e Gato estendem a classe Animal e sobrepõem o método falar para fornecer implementações específicas.
+
+3. *Função Comunicar*:
+   A função comunicar aceita qualquer objeto que seja do tipo Animal. Quando chamamos comunicar(meuCachorro) ou comunicar(meuGato), o método correto é acionado, mostrando como o polimorfismo funciona.
+
+### Conclusão
+
+O polimorfismo permite que você escreva código mais flexível e reutilizável. Em vez de depender de tipos específicos, você pode trabalhar com interfaces comuns, facilitando a manutenção e a expansão do código.
+
+
+
+
+
+
+
+
+
